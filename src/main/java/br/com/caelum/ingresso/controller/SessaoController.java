@@ -41,7 +41,6 @@ public class SessaoController {
 	
 	@PostMapping(value="/admin/sessao")
 	@Transactional
-
 	public ModelAndView salva(@Valid SessaoForm form, BindingResult result) {
 	
 		if (result.hasErrors()) return form(form.getSalaId(),form);
