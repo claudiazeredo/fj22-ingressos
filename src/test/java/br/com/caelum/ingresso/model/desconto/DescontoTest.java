@@ -10,8 +10,10 @@ import org.junit.Test;
 
 import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Ingresso;
+import br.com.caelum.ingresso.model.Lugar;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
+import br.com.caelum.ingresso.model.TipoDeIngresso;
 import br.com.caelum.ingresso.model.descontos.DescontoParaBancos;
 import br.com.caelum.ingresso.model.descontos.DescontoParaEstudantes;
 import br.com.caelum.ingresso.model.descontos.SemDesconto;
@@ -22,13 +24,16 @@ public class DescontoTest {
 	private Sala sala;
 	private Filme filme;
 	private Sessao sessao;
-	
+	private Ingresso ingresso;
+	private Lugar lugar;
 	
 	@Before
 	public void preparaSessoes() {
+		this.lugar = new Lugar("A",1);
 		this.sala = new Sala("Eldorado - IMAX", new BigDecimal("20.5"));
 		this.filme = new Filme("Rogue One", Duration.ofMinutes(120),"SCI-FI",new BigDecimal("12"));
 		this.sessao = new Sessao(LocalTime.parse("10:00:00"),filme,sala);
+		this.ingresso	=	new	Ingresso(sessao, TipoDeIngresso.INTEIRO,lugar);
 	}
 	
 	@Test
